@@ -1,0 +1,507 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: BMoS ECU_CAN4
+
+
+BO_ 656 charger_Signals: 8 Vector__XXX
+ SG_ FAN_Control : 3|2@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_EN : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Balancing_EN : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ IMC_EN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1365 IMD: 8 Vector__XXX
+ SG_ AMS_latched : 33|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ IMD_Latched : 32|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 624 charge_EN: 8 Vector__XXX
+ SG_ Charge_EN : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Balance_FIN : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 784 BMS_Debug: 8 Vector__XXX
+ SG_ BMOS_Connected12 : 12|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected11 : 11|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected10 : 10|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected09 : 9|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected08 : 7|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected07 : 6|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected06 : 5|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected05 : 4|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected04 : 3|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected03 : 2|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected02 : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ BMOS_Connected01 : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ SDC_closed : 8|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 626 LTCTemp_Part2: 6 BMoS
+ SG_ LTC_Temp09 : 40|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp08 : 32|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp07 : 24|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp12 : 16|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp11 : 8|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp10 : 0|8@1- (1,0) [0|0] ""  ECU_CAN4
+
+BO_ 625 LTCTemp_Part1: 6 BMoS
+ SG_ LTC_Temp06 : 40|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp05 : 32|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp04 : 24|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp03 : 16|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp02 : 8|8@1- (1,0) [0|0] ""  ECU_CAN4
+ SG_ LTC_Temp01 : 0|8@1- (1,0) [0|0] ""  ECU_CAN4
+
+BO_ 623 Stack12_Temp07_12: 6 BMoS
+ SG_ Stack12_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack12_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack12_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack12_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack12_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack12_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 622 Stack12_Temp01_06: 6 BMoS
+ SG_ Stack12_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack12_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack12_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack12_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack12_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack12_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 621 Stack11_Temp07_12: 6 BMoS
+ SG_ Stack11_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack11_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack11_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack11_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack11_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack11_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 620 Stack11_Temp01_06: 6 BMoS
+ SG_ Stack11_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack11_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack11_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack11_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack11_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack11_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 619 Stack10_Temp07_12: 6 BMoS
+ SG_ Stack10_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack10_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack10_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack10_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack10_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack10_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 618 Stack10_Temp01_06: 6 BMoS
+ SG_ Stack10_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack10_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack10_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack10_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack10_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack10_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 617 Stack09_Temp07_12: 6 BMoS
+ SG_ Stack09_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack09_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack09_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack09_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack09_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack09_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 616 Stack09_Temp01_06: 6 BMoS
+ SG_ Stack09_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack09_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack09_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack09_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack09_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack09_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 615 Stack08_Temp07_12: 6 BMoS
+ SG_ Stack08_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack08_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack08_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack08_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack08_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack08_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 614 Stack08_Temp01_06: 6 BMoS
+ SG_ Stack08_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack08_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack08_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack08_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack08_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack08_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 613 Stack07_Temp07_12: 6 BMoS
+ SG_ Stack07_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack07_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack07_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack07_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack07_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack07_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 612 Stack07_Temp01_06: 6 BMoS
+ SG_ Stack07_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack07_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack07_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack07_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack07_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack07_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 611 Stack06_Temp07_12: 6 BMoS
+ SG_ Stack06_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack06_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack06_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack06_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack06_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack06_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 610 Stack06_Temp01_06: 6 BMoS
+ SG_ Stack06_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack06_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack06_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack06_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack06_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack06_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 609 Stack05_Temp07_12: 6 BMoS
+ SG_ Stack05_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack05_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack05_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack05_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack05_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack05_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 608 Stack05_Temp01_06: 6 BMoS
+ SG_ Stack05_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack05_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack05_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack05_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack05_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack05_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 607 Stack04_Temp07_12: 6 BMoS
+ SG_ Stack04_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack04_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack04_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack04_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack04_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack04_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 606 Stack04_Temp01_06: 6 BMoS
+ SG_ Stack04_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack04_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack04_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack04_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack04_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack04_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 605 Stack03_Temp07_12: 6 BMoS
+ SG_ Stack03_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack03_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack03_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack03_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack03_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack03_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 604 Stack03_Temp01_06: 6 BMoS
+ SG_ Stack03_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack03_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack03_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack03_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack03_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack03_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 603 Stack02_Temp07_12: 6 BMoS
+ SG_ Stack02_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack02_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack02_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack02_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack02_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack02_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 602 Stack02_Temp01_06: 6 BMoS
+ SG_ Stack02_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack02_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack02_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack02_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack02_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack02_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 601 Stack01_Temp07_12: 6 BMoS
+ SG_ Stack01_Temp_12 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack01_Temp_11 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack01_Temp_10 : 8|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack01_Temp_09 : 0|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack01_Temp_08 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack01_Temp_07 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 600 Stack01_Temp01_06: 6 BMoS
+ SG_ Stack01_Temp_06 : 40|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack01_Temp_05 : 32|8@1+ (1,0) [0|0] "°C" Vector__XXX
+ SG_ Stack01_Temp_04 : 24|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack01_Temp_03 : 16|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack01_Temp_02 : 8|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+ SG_ Stack01_Temp_01 : 0|8@1+ (1,0) [0|0] "°C"  ECU_CAN4
+
+BO_ 568 Stack12_Cell09_12: 8 BMoS
+ SG_ Stack12_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 567 Stack12_Cell05_08: 8 BMoS
+ SG_ Stack12_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 566 Stack12_Cell01_04: 8 BMoS
+ SG_ Stack12_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack12_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 562 Stack11_Cell09_12: 8 BMoS
+ SG_ Stack11_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 561 Stack11_Cell05_08: 8 BMoS
+ SG_ Stack11_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 560 Stack11_Cell01_04: 8 BMoS
+ SG_ Stack11_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack11_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 556 Stack10_Cell09_12: 8 BMoS
+ SG_ Stack10_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 555 Stack10_Cell05_08: 8 BMoS
+ SG_ Stack10_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 554 Stack10_Cell01_04: 8 BMoS
+ SG_ Stack10_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack10_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 550 Stack09_Cell09_12: 8 BMoS
+ SG_ Stack09_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 549 Stack09_Cell05_08: 8 BMoS
+ SG_ Stack09_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 548 Stack09_Cell01_04: 8 BMoS
+ SG_ Stack09_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack09_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 544 Stack08_Cell09_12: 8 BMoS
+ SG_ Stack08_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 543 Stack08_Cell05_08: 8 BMoS
+ SG_ Stack08_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 542 Stack08_Cell01_04: 8 BMoS
+ SG_ Stack08_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack08_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 538 Stack07_Cell09_12: 8 BMoS
+ SG_ Stack07_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 537 Stack07_Cell05_08: 8 BMoS
+ SG_ Stack07_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 536 Stack07_Cell01_04: 8 BMoS
+ SG_ Stack07_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack07_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 532 Stack06_Cell09_12: 8 BMoS
+ SG_ Stack06_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 531 Stack06_Cell05_08: 8 BMoS
+ SG_ Stack06_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 530 Stack06_Cell01_04: 8 BMoS
+ SG_ Stack06_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack06_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 526 Stack05_Cell09_12: 8 BMoS
+ SG_ Stack05_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 525 Stack05_Cell05_08: 8 BMoS
+ SG_ Stack05_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 524 Stack05_Cell01_04: 8 BMoS
+ SG_ Stack05_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack05_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 520 Stack04_Cell09_12: 8 BMoS
+ SG_ Stack04_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 519 Stack04_Cell05_08: 8 BMoS
+ SG_ Stack04_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 518 Stack04_Cell01_04: 8 BMoS
+ SG_ Stack04_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack04_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 514 Stack03_Cell09_12: 8 BMoS
+ SG_ Stack03_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 513 Stack03_Cell05_08: 8 BMoS
+ SG_ Stack03_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 512 Stack03_Cell01_04: 8 BMoS
+ SG_ Stack03_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack03_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 508 Stack02_Cell09_12: 8 BMoS
+ SG_ Stack02_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 507 Stack02_Cell05_08: 8 BMoS
+ SG_ Stack02_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 506 Stack02_Cell01_04: 8 BMoS
+ SG_ Stack02_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack02_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 502 Stack01_Cell09_12: 8 BMoS
+ SG_ Stack01_Zelle_12 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_11 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_10 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_09 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 501 Stack01_Cell05_08: 8 BMoS
+ SG_ Stack01_Zelle_08 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_07 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_06 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_05 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+BO_ 500 Stack01_Cell01_04: 8 BMoS
+ SG_ Stack01_Zelle_04 : 48|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_03 : 32|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_02 : 16|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+ SG_ Stack01_Zelle_01 : 0|16@1+ (1,0) [0|0] "100 uV"  ECU_CAN4
+
+
+
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;

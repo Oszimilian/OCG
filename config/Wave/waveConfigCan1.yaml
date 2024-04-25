@@ -1,0 +1,62 @@
+waveConfig:
+  updateDuration: 
+    unit: ms
+    duration: 10
+  single:
+    - messageName: Stack11_Temp07_12
+      messageSignals:
+        - signalName: Stack11_Temp_12
+          signalNoise: 20
+          wave:
+            10: 50
+            20: 50
+            30: 60
+        - signalName: Stack11_Temp_11
+          signalNoise: 20
+          wave:
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_10
+          signalNoise: 20
+          wave:
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_09
+          signalNoise: 20
+          wave:
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_08
+          signalNoise: 20
+          wave:
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_07
+          signalNoise: 20
+          wave:
+            10: 45
+            20: 50
+            30: 20
+
+  multi:
+    signalNoise: 20
+
+    wave:
+      10: 45
+      20: 50
+      30: 25
+    parts:
+      - Message:
+        messageName: test
+        messageSignals:
+          - Stack11_Temp_06
+          - Stack11_Temp_03
+      - Message:
+        messageName: test2
+        messageSignals:
+          - Stack11_Temp_03
+          - Stack11_Temp_04

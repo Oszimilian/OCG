@@ -1,0 +1,255 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: MABX BMaS IVT_Mod
+VAL_TABLE_ Debug_plausible_TS_EN 31 "EN, TSMS, BMoS, IVT u. No AMS" 30 "TSMS, BMoS, IVT u. No AMS" 29 "EN, BMoS, IVT u. No AMS" 28 "BMoS, IVT u. No AMS" 27 "EN, TSMS, IVT u. No AMS" 26 "TSMS, IVT u. No AMS" 25 "EN, IVT u. No AMS" 24 "IVT u. No AMS" 23 "EN, TSMS, BMoS u. No AMS" 22 "TSMS, BMoS u. No AMS" 21 "EN, BMoS u. No AMS" 20 "BMoS u. No AMS" 19 "EN, TSMS u. No AMS" 18 "TSMS u. No AMS" 17 "EN u. No AMS" 16 "No AMS" 15 "EN, TSMS, BMoS u. IVT" 14 "TSMS, BMoS u. IVT" 13 "EN, BMoS u. IVT" 12 "BMoS u. IVT" 11 "EN, TSMS u. IVT" 10 "TSMS u. IVT" 9 "EN u. IVT" 8 "IVT" 7 "EN, TSMS u. BMoS" 6 "TSMS u. BMoS" 5 "EN u. BMoS" 4 "BMoS" 3 "EN u. TSMS" 2 "TSMS" 1 "EN" 0 "Not OK" ;
+VAL_TABLE_ Debug_Cell_Error 31 "No T, Min T, Max T, Min V, Max V" 30 "Min T u. Max T u. Min V u. Max V" 29 "No T u. Max T u. Min V u. Max V" 28 "Max T u. Min V u. Max V" 27 "No T u. Min T u. Min V u. Max V" 26 "Min T u. Min V u. Max V" 25 "No T u. Min V u. Max V" 24 "Min V u. Max V" 23 "No T u. Min T u. Max T u. Max V" 22 "Min T u. Max T u. Max V" 21 "No T u. Max T u. Max V" 20 "Max T u. Max V" 19 "No T u. Min T u. Max V" 18 "Min T u. Max V" 17 "No T u. Max V" 16 "Max V" 15 "No T u. Min T u. Max T u. Min V" 14 "Min T u. Max T u. Min V" 13 "No T u. Max T u. Min V" 12 "Max T u. Min V" 11 "No T u. Min T u. Max V" 10 "Min T u. Min V" 9 "No T u. Min V" 8 "Min V" 7 "No T u. Min T u. Max T" 6 "Min T u. Max T " 5 "No T u. Max T" 4 "Max T" 3 "No T u. Min T" 2 "Min T" 1 "No T" 0 "no error" ;
+VAL_TABLE_ Debug_Implausibility_Error 31 "Min U, Max I, BMoS, IVT u. AIR" 30 "Max I u. BMoS u. IVT u. AIR" 29 "Min U u. BMoS u. IVT u. AIR" 28 "BMoS u. IVT u. AIR" 27 "Min U u. Max I u. IVT u. AIR" 26 "Max I u. IVT u. AIR" 25 "Min U u. IVT u. AIR" 24 "IVT u. AIR" 23 "Min U u. Max I u. BMoS u. AIR" 22 "Max I u. BMoS u. AIR" 21 "Min U u. BMoS u. AIR" 20 "BMoS u. AIR" 19 "Min U u. Max I u. AIR" 18 "Max I u, AIR" 17 "Min U u. AIR" 16 "AIR" 15 "Min U u. Max I u. BMoS u. IVT" 14 "Max I u. BMoS u. IVT" 13 "Min U u. BMoS u. IVT" 12 "BMoS u. IVT" 11 "Min U u. Max I u. IVT" 10 "Max I u. IVT" 9 "Min U u. IVT" 8 "IVT" 7 "Min U u. Max I u. BMoS" 6 "Max I u. BMoS" 5 "Min U u. BMoS" 4 "BMoS" 3 "Min U u. Max I" 2 "Max I" 1 "Min U" 0 "no error" ;
+VAL_TABLE_ Debug_Statemachine 10 "TS_Deactivated" 9 "AMS Error resetable" 8 "AMS Error Latched" 7 "Deactivation with AMS" 6 "Deactivation without AMS" 5 "TS_Active" 4 "Precharge Finished" 3 "Precharge Check" 2 "Precharge_Enable" 1 "AIR_N Enable" 0 "Not initialized" ;
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ IVT_Error : 0|1@1+ (1,0) [0|1] "" Vector__XXX
+
+BO_ 4 BMaS_Commands: 8 MABX
+ SG_ Vehicle_Status : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Akku_Fan_Dutycycle : 8|7@1+ (1,0) [0|127] "" Vector__XXX
+ SG_ BMaS_Debug_Commands : 1|1@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ TS_EN : 0|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 3 Cell_Temp_Info: 8 BMaS
+ SG_ Min_T_Cell_ID : 40|8@1+ (1,0) [0|0] ""  MABX
+ SG_ Min_Cell_Temp : 24|16@1- (1,0) [0|0] "°C"  MABX
+ SG_ Max_T_Cell_ID : 16|8@1+ (1,0) [0|0] ""  MABX
+ SG_ Max_Cell_Temp : 0|16@1- (1,0) [0|0] "°C"  MABX
+
+BO_ 2 Cell_Voltage_Info: 8 BMaS
+ SG_ Min_V_Cell_ID : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Min_Cell_Voltage : 24|16@1+ (1,0) [0|0] "100uV"  MABX
+ SG_ Max_V_Cell_ID : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ Max_Cell_Voltage : 0|16@1+ (1,0) [0|0] "100uV"  MABX
+
+BO_ 17 BMaS_Status: 5 BMaS
+ SG_ Debug_Plausible_TS_EN : 32|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ Debug_Cell_Error : 16|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ Debug_Implausibility_Error : 24|5@1+ (1,0) [0|31] "" Vector__XXX
+ SG_ TSAL_red : 14|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ TSAL_green : 15|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Implausibility_error : 30|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ BMoS_Error : 5|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Precharge_EN : 23|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ AIR_P_EN : 21|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ AIR_N_EN : 22|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Plausible_TS_EN : 29|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Debug_statemachine : 36|4@1+ (1,0) [0|15] "" Vector__XXX
+ SG_ Cell_Error : 31|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Temperature_Invalid : 7|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ TS_Disable : 6|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ Precharge_AUX : 2|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ IMD_Error_Latched : 4|1@1+ (1,0) [0|1] ""  MABX
+ SG_ BMoS_Connected : 9|1@1+ (1,0) [0|1] "" Vector__XXX
+ SG_ AMS_Error_Latched : 3|1@1+ (1,0) [0|1] ""  MABX
+ SG_ AIR_P_AUX : 0|1@1+ (1,0) [0|1] ""  MABX
+ SG_ AIR_N_AUX : 1|1@1+ (1,0) [0|1] ""  MABX
+
+BO_ 1316 IVT_Msg_Result_Wh: 6 IVT_Mod
+ SG_ IVT_Result_Wh_System_Error : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_Wh_OCS : 12|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_Wh_Measurement_Error : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_Wh_Channel_Error : 13|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_Wh : 23|32@0- (1,0) [0|0] "Wh"  BMaS
+ SG_ IVT_MsgCount_Result_Wh : 11|4@0+ (1,0) [0|0] ""  BMaS
+ SG_ IVT_ID_Result_Wh : 7|8@0+ (1,0) [7|7] ""  BMaS
+
+BO_ 1315 IVT_Msg_Result_U2: 6 IVT_Mod
+ SG_ IVT_Result_U2_System_Error : 15|1@0+ (1,0) [0|0] ""  MABX
+ SG_ IVT_Result_U2_OCS : 12|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_U2_Measurement_Error : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_U2_Channel_Error : 13|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_ID_Result_U2 : 7|8@0+ (1,0) [2|2] ""  BMaS
+ SG_ IVT_MsgCount_Result_U2 : 11|4@0+ (1,0) [0|0] ""  BMaS
+ SG_ IVT_Result_U2 : 23|32@0- (1,0) [0|0] "mV"  MABX,BMaS
+
+BO_ 1314 IVT_Msg_Result_U1: 6 IVT_Mod
+ SG_ IVT_Result_U1_System_Error : 15|1@0+ (1,0) [0|0] ""  MABX
+ SG_ IVT_Result_U1_Measurement_Error : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_U1_Channel_Error : 13|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_U1_OCS : 12|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_ID_Result_U1 : 7|8@0+ (1,0) [1|1] ""  MABX,BMaS
+ SG_ IVT_Result_U1 : 23|32@0- (1,0) [0|0] "mV"  MABX,BMaS
+ SG_ IVT_MsgCount_Result_U1 : 11|4@0+ (1,0) [0|0] ""  BMaS
+
+BO_ 1313 IVT_Msg_Result_I: 6 IVT_Mod
+ SG_ IVT_Result_I_System_Error : 15|1@0+ (1,0) [0|0] ""  MABX
+ SG_ IVT_Result_I_OCS : 12|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_I_Measurement_Error : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_Result_I_Channel_Error : 13|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_ID_Result_I : 7|8@0+ (1,0) [0|0] ""  BMaS
+ SG_ IVT_MsgCount_Result_I : 11|4@0+ (1,0) [0|0] ""  BMaS
+ SG_ IVT_Result_I : 23|32@0- (1,0) [0|0] "mA"  MABX,BMaS
+
+BO_ 1041 IVT_Msg_Cmd: 8 BMaS
+ SG_ _31_07_Trigger_WH m49 : 23|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _31_06_Trigger_AH m49 : 22|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _31_05_Trigger_W m49 : 21|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _31_04_Trigger_T m49 : 20|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _31_03_Trigger_U3 m49 : 19|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _31_Trigger_spare m49 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _31_02_Trigger_U2 m49 : 18|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _10_Set_Can_ID_SN_I m16 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _10_Set_Can_ID_val_I m16 : 15|16@0+ (1,0) [0|2047] ""  IVT_Mod
+ SG_ _11_Set_Can_ID_SN_U1 m17 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _11_Set_Can_ID_val_U1 m17 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _12_Set_Can_ID_SN_U2 m18 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _12_Set_Can_ID_val_U2 m18 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _13_Set_Can_ID_SN_U3 m19 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _13_Set_Can_ID_val_U3 m19 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _14_Set_Can_ID_SN_T m20 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _14_Set_Can_ID_val_T m20 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _15_Set_Can_ID_SN_W m21 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _15_Set_Can_ID_val_W m21 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _16_Set_Can_ID_SN_Ah m22 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _16_Set_Can_ID_val_Ah m22 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _17_Set_Can_ID_SN_Wh m23 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _17_Set_Can_ID_val_Wh m23 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _1D_Set_Can_ID_SN_Command m29 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _1D_Set_Can_ID_val_Command m29 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _1F_Set_Can_ID_SN_Response m31 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _1F_Set_Can_ID_val_Response m31 : 15|16@0+ (1,0) [0|2047] "" Vector__XXX
+ SG_ _20_Conf_CycleTime_I m32 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _20_Conf_Endianess_I m32 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _20_Conf_Sign_I m32 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _20_Conf_TriggerMode_I m32 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _21_Conf_CycleTime_U1 m33 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _21_Conf_Endianess_U1 m33 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _21_Conf_Sign_U1 m33 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _21_Conf_TriggerMode_U1 m33 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _22_Conf_CycleTime_U2 m34 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _22_Conf_Endianess_U2 m34 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _22_Conf_Sign_U2 m34 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _22_Conf_TriggerMode_U2 m34 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _23_Conf_CycleTime_U3 m35 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _23_Conf_Endianess_U3 m35 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _23_Conf_Sign_U3 m35 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _23_Conf_TriggerMode_U3 m35 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _24_Conf_CycleTime_T m36 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _24_Conf_Endianess_T m36 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _24_Conf_Sign_T m36 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _24_Conf_TriggerMode_T m36 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _25_Conf_CycleTime_W m37 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _25_Conf_Endianess_W m37 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _25_Conf_Sign_W m37 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _25_Conf_TriggerMode_W m37 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _26_Conf_CycleTime_AH m38 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _26_Conf_Endianess_AH m38 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _26_Conf_Sign_AH m38 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _26_Conf_TriggerMode_As m38 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _27_Conf_CycleTime_WH m39 : 23|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _27_Conf_Endianess_WH m39 : 14|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _27_Conf_Sign_WH m39 : 15|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _27_Conf_TriggerMode_WH m39 : 9|2@0+ (1,0) [0|2] "" Vector__XXX
+ SG_ _30_Reset_Item m48 : 15|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _30_Reset_Device_SN m48 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _31_00_Trigger_I m49 : 16|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _32_Store_dummy m50 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _33_Oc_Test_Time m51 : 15|16@0+ (1,0) [0|0] "ms" Vector__XXX
+ SG_ _34_Actual_Mode m52 : 8|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _34_Code_Level m52 : 31|16@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _34_Startup_Mode m52 : 16|1@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _35_OC_Pos_Reset_Threshold m53 : 15|16@0- (1,0) [0|0] "A" Vector__XXX
+ SG_ _35_OC_Pos_Set_Threshold m53 : 31|16@0- (1,0) [0|0] "A" Vector__XXX
+ SG_ _36_OC_Neg_Reset_Threshold m54 : 15|16@0- (1,0) [0|0] "A" Vector__XXX
+ SG_ _36_OC_Neg_Set_Threshold m54 : 31|16@0- (1,0) [0|0] "A" Vector__XXX
+ SG_ _3A_Restart_Prescaler m58 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _3D_Restart_Default_Dummy m61 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _3F_Restart_Dummy m63 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _40_Get_MeasError_Item m64 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _41_Get_SystemError_Item m65 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _42_Get_AllLogData_Item m66 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _43_Get_LogData_Item m67 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _50_Get_Can_ID_SN_I m80 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _51_Get_Can_ID_SN_U1 m81 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _52_Get_Can_ID_SN_U2 m82 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _53_Get_Can_ID_SN_U3 m83 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _54_Get_Can_ID_SN_T m84 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _55_Get_Can_ID_SN_W m85 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _56_Get_Can_ID_SN_Ah m86 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _57_Get_Can_ID_SN_Wh m87 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _5D_Get_Can_ID_SN_Command m93 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _5F_Get_Can_ID_SN_Response m95 : 31|32@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _60_Get_Result_dummy_I m96 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _61_Get_Result_dummy_U1 m97 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _62_Get_Result_dummy_U2 m98 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _63_Get_Result_dummy_U3 m99 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _64_Get_Result_dummy_T m100 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _65_Get_Result_dummy_W m101 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _66_Get_Result_dummy_Ah m102 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _67_Get_Result_dummy_Wh m103 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _73_Get_OC_Test_dummy m115 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _74_Get_Mode_dummy m116 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _75_Get_OC_Pos_dummy m117 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _76_Get_OC_Neg_dummy m118 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _79_Get_Device_Id_dummy m121 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _7A_Get_SW_Version_dummy m122 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _7B_Get_Serien_Nr_dummy m123 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ _7C_Get_Art_Nr_dummy m124 : 15|8@0+ (1,0) [0|0] "" Vector__XXX
+ SG_ IVT_ID_Cmd M : 7|8@0+ (1,0) [0|0] ""  IVT_Mod
+ SG_ IVT_Cmd_data m0 : 15|56@0+ (1,0) [0|0] ""  IVT_Mod
+
+
+
+EV_ envSTM8test: 0 [0|0] "" 0 1 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+EV_ EnvKlemme15: 0 [0|1] "" 0 2 DUMMY_NODE_VECTOR0 Vector__XXX;
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BU_  "ECU" STRING ;
+BA_DEF_ BU_  "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_  "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_  "CANoeDrift" INT 0 0;
+BA_DEF_ BU_  "CANoeStartDelay" INT 0 0;
+BA_DEF_DEF_  "BusType" "";
+BA_DEF_DEF_  "NodeLayerModules" "";
+BA_DEF_DEF_  "ECU" "";
+BA_DEF_DEF_  "CANoeJitterMax" 0;
+BA_DEF_DEF_  "CANoeJitterMin" 0;
+BA_DEF_DEF_  "CANoeDrift" 0;
+BA_DEF_DEF_  "CANoeStartDelay" 0;
+VAL_ 17 Debug_Plausible_TS_EN 15 "EN, TSMS, BMoS u. No AMS" 14 "TSMS, BMoS u. No AMS" 13 "EN, BMoS u. No AMS" 12 "BMoS u. No AMS" 11 "EN, TSMS u. No AMS" 10 "TSMS u. No AMS" 9 "EN u. No AMS" 8 "No AMS" 7 "EN, TSMS u. BMoS" 6 "TSMS u. BMoS" 5 "EN u. BMoS" 4 "BMoS" 3 "EN u. TSMS" 2 "TSMS" 1 "EN" 0 "Description for the value '0x0'" ;
+VAL_ 17 Debug_Cell_Error 31 "No T, Min T, Max T, Min V, Max V" 30 "Min T u. Max T u. Min V u. Max V" 29 "No T u. Max T u. Min V u. Max V" 28 "Max T u. Min V u. Max V" 27 "No T u. Min T u. Min V u. Max V" 26 "Min T u. Min V u. Max V" 25 "No T u. Min V u. Max V" 24 "Min V u. Max V" 23 "No T u. Min T u. Max T u. Max V" 22 "Min T u. Max T u. Max V" 21 "No T u. Max T u. Max V" 20 "Max T u. Max V" 19 "No T u. Min T u. Max V" 18 "Min T u. Max V" 17 "No T u. Max V" 16 "Max V" 15 "No T u. Min T u. Max T u. Min V" 14 "Min T u. Max T u. Min V" 13 "No T u. Max T u. Min V" 12 "Max T u. Min V" 11 "No T u. Min T u. Max V" 10 "Min T u. Min V" 9 "No T u. Min V" 8 "Min V" 7 "No T u. Min T u. Max T" 6 "Min T u. Max T " 5 "No T u. Max T" 4 "Max T" 3 "No T u. Min T" 2 "Min T" 1 "No T" 0 "no error" ;
+VAL_ 17 Debug_Implausibility_Error 31 "Min U, Max I, BMoS, IVT u. AIR" 30 "Max I u. BMoS u. IVT u. AIR" 29 "Min U u. BMoS u. IVT u. AIR" 28 "BMoS u. IVT u. AIR" 27 "Min U u. Max I u. IVT u. AIR" 26 "Max I u. IVT u. AIR" 25 "Min U u. IVT u. AIR" 24 "IVT u. AIR" 23 "Min U u. Max I u. BMoS u. AIR" 22 "Max I u. BMoS u. AIR" 21 "Min U u. BMoS u. AIR" 20 "BMoS u. AIR" 19 "Min U u. Max I u. AIR" 18 "Max I u, AIR" 17 "Min U u. AIR" 16 "AIR" 15 "Min U u. Max I u. BMoS u. IVT" 14 "Max I u. BMoS u. IVT" 13 "Min U u. BMoS u. IVT" 12 "BMoS u. IVT" 11 "Min U u. Max I u. IVT" 10 "Max I u. IVT" 9 "Min U u. IVT" 8 "IVT" 7 "Min U u. Max I u. BMoS" 6 "Max I u. BMoS" 5 "Min U u. BMoS" 4 "BMoS" 3 "Min U u. Max I" 2 "Max I" 1 "Min U" 0 "no error" ;
+VAL_ 17 Debug_statemachine 10 "TS_Deactivated" 9 "AMS Error resetable" 8 "AMS Error Latched" 7 "Deactivation with AMS" 6 "Deactivation without AMS" 5 "TS_Active" 4 "Precharge Finished" 3 "Precharge Check" 2 "Precharge_Enable" 1 "AIR_N Enable" 0 "Not initialized" ;
