@@ -1,7 +1,7 @@
 waveConfig:
   updateDuration: 
     unit: ms
-    duration: 10
+    duration: 1000
   single:
     - messageName: Stack11_Temp07_12
       messageSignals:

@@ -4,6 +4,7 @@
 #include <string>
 #include <yaml-cpp/yaml.h>
 #include <map>
+#include <boost/asio.hpp>
 
 struct BaseConfig {
     std::string interfaceName;
@@ -38,7 +39,13 @@ struct WaveConfig {
 
 class CanGen {
     public:
-        CanGen() = default;
+        CanGen() :
+            m_gloablUpdateDurationUnit(),
+            m_interfaceConfigMap(),
+            m_io(),
+            m_waveSingleConfigMap(){}
+
+
 
         bool importBaseConfig(const std::string& baseConfigFilePath) {
             try {
@@ -65,13 +72,63 @@ class CanGen {
             return true;
         }
 
+        void processMessages() {
+            int step = m_globalStep;
+
+            for (auto& [interfaceName, waveConfig] : m_waveSingleConfigMap) {
+                
+                for (auto& [messageName, messageConfig] : waveConfig.messages){
+                    
+                    for (auto& [signalName, waveSignalConfig] : messageConfig.signalConfig) {
+                        
+                        if(waveSignalConfig.wave.multiWaveSteps.count(step)) {
+                            waveSignalConfig.wave.value = waveSignalConfig.wave.multiWaveSteps.at(step);
+                        }
+                        std::cout << signalName << ": " << waveSignalConfig.wave.value << std::endl;
+                        
+                    }
+                    
+                }
+                
+            }
+        }
+
+        static void timerCallback(const boost::system::error_code&, boost::asio::steady_timer* timer) {
+            //processMessages();
+
+
+            timer->expires_at(timer->expiry() + boost::asio::chrono::milliseconds(m_globalUpdateDuration));
+            timer->async_wait(std::bind(timerCallback, std::placeholders::_1, timer));
+        }
+
         void init() {
             for (const auto&[interfaceName, baseConfig] : m_interfaceConfigMap) {
                 importWaveConfig(baseConfig.customWaveFilePath, interfaceName);
             }
 
+            
+
+            boost::asio::steady_timer timer(m_io, boost::asio::chrono::milliseconds(m_globalUpdateDuration));
+            timer.async_wait(std::bind(timerCallback, std::placeholders::_1, &timer));
+            /*
+            timer.async_wait([this, &timer](const boost::system::error_code& error) {
+                if(!error) {
+                    processMessages();
+                    timer.expires_at(timer.expiry() + boost::asio::chrono::milliseconds(m_globalUpdateDuration));
+
+                }
+
+            });
+            */
+
             print();
+
+            std::cout << "Started Timer" << std::endl;
+            m_io.run();
         }
+
+
+
 
         bool isNumber(const std::string& val) {
             
@@ -80,6 +137,14 @@ class CanGen {
             }
             
             return true;
+        }
+
+        static void set_globalUpdateDuration(int duration) {
+            m_globalUpdateDuration = duration;
+        }
+
+        static void incrementGlobalStep() {
+            m_globalStep++;
         }
 
         bool importWaveConfig(const std::string& waveConfigFilePath, const std::string& interfaceName) {
@@ -91,7 +156,9 @@ class CanGen {
                 
                 auto updateDuration = root["updateDuration"];
                 m_gloablUpdateDurationUnit = updateDuration["unit"].as<std::string>();
-                m_globalUpdateDuration = updateDuration["duration"].as<int>();
+                int globalUpdateDuration = updateDuration["duration"].as<int>();
+                set_globalUpdateDuration(globalUpdateDuration);
+
 
                 WaveConfig waveSingleConfig;
                   
@@ -190,9 +257,17 @@ class CanGen {
         std::map<std::string, BaseConfig> m_interfaceConfigMap;
         std::map<std::string, WaveConfig> m_waveSingleConfigMap;
 
-    private:
-        int m_globalUpdateDuration;
+
+    public:
+        static int m_globalStep;
+        static int m_globalUpdateDuration;
         std::string m_gloablUpdateDurationUnit;
+
+    private:
+        boost::asio::io_context m_io;
 };
+
+int CanGen::m_globalUpdateDuration = 10;
+int CanGen::m_globalStep = 0;
 
 #endif

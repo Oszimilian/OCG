@@ -7,5 +7,6 @@ int main(int argc, char **argv) {
     CanGen canGen;
     canGen.importBaseConfig("../config/baseConfig.yaml");
     canGen.init();
+
     return 0;
 }
