@@ -1,20 +1,75 @@
-multi:
-  wave:
-    10: 45
-    20: 50
-    30: 25
-  parts:
-    - messageName: Stack11_Temp01_06
-      1: Stack11_Temp_06
-      2: Stack11_Temp_05
-      3: Stack11_Temp_04
-      4: Stack11_Temp_03
-      5: Stack11_Temp_02
-      6: Stack11_Temp_01
-    - messageName: Stack10_Temp07_12
-      1: Stack10_Temp_12
-      2: Stack10_Temp_11
-      3: Stack10_Temp_10
-      4: Stack10_Temp_09
-      5: Stack10_Temp_08
-      6: Stack10_Temp_07
+waveConfig:
+  updateDuration: 
+    unit: ms
+    duration: 1000
+  single:
+    - messageName: Stack11_Temp07_12
+      messageSignals:
+        - signalName: Stack11_Temp_12
+          signalNoise: 20
+          transformType: linear #static
+          wave:
+            0: 50
+            10: 40
+            20: 50
+            30: 60
+        - signalName: Stack11_Temp_11
+          signalNoise: 20
+          transformType: static #linear
+          wave:
+            0: 50
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_10
+          signalNoise: 20
+          transformType: static #linear
+          wave:
+            0: 50
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_09
+          signalNoise: 20
+          transformType: static #linear
+          wave:
+            0: 50
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_08
+          signalNoise: 20
+          transformType: static #linear
+          wave:
+            0: 50
+            10: 45
+            20: 50
+            30: 20
+        - signalName: Stack11_Temp_07
+          signalNoise: 20
+          transformType: static #linear
+          wave:
+            0: 50
+            10: 45
+            20: 50
+            30: 20
+
+  multi:
+    signalNoise: 20
+    transformType: static #linear
+    wave:
+      0: 50
+      10: 45
+      20: 50
+      30: 25
+    parts:
+      - Message:
+        messageName: test
+        messageSignals:
+          - Stack11_Temp_06
+          - Stack11_Temp_03
+      - Message:
+        messageName: test2
+        messageSignals:
+          - Stack11_Temp_03
+          - Stack11_Temp_04
