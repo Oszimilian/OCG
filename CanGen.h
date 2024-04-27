@@ -6,6 +6,18 @@
 #include <map>
 #include <boost/asio.hpp>
 #include <algorithm>
+#include <linux/can.h>
+#include <linux/can/raw.h>
+#include <sys/socket.h>
+#include <unistd.h>
+#include <CanDriver.hpp>
+#include <memory>
+#include <dbcppp/Network.h>
+#include <fstream>
+#include <optional>
+#include <bitset>
+#include <cstdint>
+
 
 struct BaseConfig {
     std::string interfaceName;
@@ -19,9 +31,9 @@ enum class TransistionTyp : uint32_t{
 };
 
 struct Wave {
-    std::map<int, float> multiWaveSteps;
-    float value;
-    float m;
+    std::map<int, double> multiWaveSteps;
+    double value;
+    double m;
     TransistionTyp transistionTyp;
 };
 
@@ -76,11 +88,55 @@ class CanGen {
             return true;
         }
 
+        static std::optional<const dbcppp::IMessage*> getDbcMessageFromMessageName(const std::unordered_map<uint64_t, const dbcppp::IMessage*>& dbcMessages, const std::string& messageName) {
+            for (const auto& [id, message] : dbcMessages) {
+                if(message->Name() == messageName) {
+                    return message;
+                }
+            }
+            return {};
+        }
+
+        static std::optional<const dbcppp::ISignal*> getDbcSignalFromSignalName(const dbcppp::IMessage* iMessage, const std::string& signalName) {
+            for (const auto& sig : iMessage->Signals()) {
+                if (sig.Name() == signalName) {
+                    return &sig;
+                }
+            }
+            return {};
+        }
+
         static void processMessages() {
 
             for (auto& [interfaceName, waveConfig] : m_waveSingleConfigMap) {
                 
+                if (!m_interfaceCanMap.count(interfaceName)) {
+                    return;
+                }
+
+                auto& canDriver = m_interfaceCanMap.at(interfaceName);
+
                 for (auto& [messageName, messageConfig] : waveConfig.messages){
+
+                    if(!m_dbcMessages.count(interfaceName)) {
+                        std::cerr << "Cant find Message in dbcMessages" << std::endl;
+                        std::cerr << "MessageName: " << interfaceName << std::endl;
+                        break;
+                    }
+
+                    auto dbcMessageNet = m_dbcMessages.at(interfaceName);
+
+                    auto dbcMessage = getDbcMessageFromMessageName(dbcMessageNet, messageName);
+                    
+                    if(!dbcMessage.has_value()) {
+                        std::cerr << "Cant find Message Name in dbcMessage" << std::endl;
+                        std::cerr << "MessageName: " << messageName << std::endl;
+                        break;
+                    }
+
+                    auto dbcIMessage = dbcMessage.value();
+
+                    can_frame frame;
                     
                     for (auto& [signalName, waveSignalConfig] : messageConfig.signalConfig) {
 
@@ -98,13 +154,13 @@ class CanGen {
                                 waveSignalConfig.wave.value = itMwsBegin->second;
                             }
                             else if(waveSignalConfig.wave.transistionTyp ==  TransistionTyp::linearTransistion) {
-                                float y = itMwsBegin->second;
+                                double y = itMwsBegin->second;
                                 int x = itMwsBegin->first;
                                 
                                 itMwsBegin++;
                                 if (itMwsBegin != itMwsEnd) {
-                                    float deltaX = (float)(itMwsBegin->first - x);
-                                    float deltaY = (float)(itMwsBegin->second - y);
+                                    double deltaX = (double)(itMwsBegin->first - x);
+                                    double deltaY = (double)(itMwsBegin->second - y);
                                     waveSignalConfig.wave.m = deltaY / deltaX;
                                     std::cout << "m = " << waveSignalConfig.wave.m << std::endl;
                                 } else {
@@ -116,18 +172,43 @@ class CanGen {
                         } else {
                             if(waveSignalConfig.wave.transistionTyp ==  TransistionTyp::linearTransistion) {
                                waveSignalConfig.wave.value += waveSignalConfig.wave.m;
+                               //std::cout << "f(" << m_globalStep << ") = " << waveSignalConfig.wave.value << std::endl;
                             }
                         }
+ 
+                        auto dbcSignal = getDbcSignalFromSignalName(dbcIMessage, signalName);
 
+                        if (!dbcSignal.has_value()) {
+                            std::cerr << "Cant find Signal Name in IMessage" << std::endl;
+                            std::cerr << "Signalname: " << signalName << std::endl;
+                            return;
+                        }
 
-                        std::cout << signalName << ": " << waveSignalConfig.wave.value << std::endl;
-                        
+                        auto dbcISignal = dbcSignal.value();
+
+                        auto raw = dbcISignal->PhysToRaw(waveSignalConfig.wave.value);
+                        dbcISignal->Encode(raw, frame.data);
+
+                    }
+                    
+                    frame.can_id = dbcIMessage->Id();
+                    frame.len = dbcIMessage->MessageSize();
+
+                    sockcanpp::CanMessage canMessage(frame);
+                    auto sendSize = canDriver->sendMessage(canMessage);
+                    
+                    //std::cout << "SendSize: " << sendSize << std::endl;
+                    if (messageName == "Stack11_Cell05_08") {
+                        std::cout << messageName;
+                        for (int i = 7; i >= 0; i--) {
+                            std::cout << std::hex << static_cast<int>(frame.data[i]) << " ";
+                        }
+                        std::cout << std::endl;
                     }
                     
                 }
                 
             }
-            std::cout << std::endl;
             m_globalStep++;
         }
 
@@ -137,9 +218,40 @@ class CanGen {
             timer->async_wait(std::bind(timerCallback, std::placeholders::_1, timer));
         }
 
+        static bool initCan(const std::string& interfaceName) {
+            auto canDriver = std::make_unique<sockcanpp::CanDriver>(interfaceName, 1);
+            m_interfaceCanMap.emplace(interfaceName, std::move(canDriver));
+            return true;
+        }
+
+        static bool initDbc(const std::string& interfaceName, const std::string& dbcFilePath) {
+            std::ifstream idbc(dbcFilePath);
+            if(!idbc) {
+                std::cerr << "Cant open .dbc File" << std::endl;
+                std::cerr << "Filename: " << dbcFilePath << std::endl;
+                return false;
+            }
+
+            std::unique_ptr<dbcppp::INetwork> net = dbcppp::INetwork::LoadDBCFromIs(idbc);
+
+            std::unordered_map<uint64_t, const dbcppp::IMessage*> dbcMessages;
+            for (const auto& msg : net->Messages()) {
+                dbcMessages.emplace(msg.Id(), &msg);
+            }
+
+            m_dbcMessages.emplace(interfaceName, std::move(dbcMessages));
+            m_interfaceDbcMap.emplace(interfaceName, std::move(net));
+
+            return true;
+        }
+
         static void init() {
             for (const auto&[interfaceName, baseConfig] : m_interfaceConfigMap) {
-                importWaveConfig(baseConfig.customWaveFilePath, interfaceName);
+                if(!importWaveConfig(baseConfig.customWaveFilePath, interfaceName)) return;
+
+                if(!initCan(interfaceName)) return;
+
+                if(!initDbc(interfaceName, baseConfig.dbcFilePath)) return;
             }
 
             boost::asio::steady_timer timer(m_io, boost::asio::chrono::milliseconds(m_globalUpdateDuration));
@@ -310,13 +422,29 @@ class CanGen {
 
     private:
         static boost::asio::io_context m_io;
+
+    
+    private:
+        static std::map<std::string, std::unique_ptr<sockcanpp::CanDriver>> m_interfaceCanMap;
+
+    private:
+        static std::map<std::string, std::unique_ptr<dbcppp::INetwork>> m_interfaceDbcMap;
+        static std::map<std::string, std::unordered_map<uint64_t, const dbcppp::IMessage*>> m_dbcMessages;
+
 };
 
 std::map<std::string, BaseConfig> CanGen::m_interfaceConfigMap{};
 std::map<std::string, WaveConfig> CanGen::m_waveSingleConfigMap{};
+
 int CanGen::m_globalUpdateDuration = 10;
 int CanGen::m_globalStep = 0;
+
 std::string CanGen::m_gloablUpdateDurationUnit{};
 boost::asio::io_context CanGen::m_io{};
+
+std::map<std::string, std::unique_ptr<sockcanpp::CanDriver>> CanGen::m_interfaceCanMap{};
+
+std::map<std::string, std::unique_ptr<dbcppp::INetwork>> CanGen::m_interfaceDbcMap{};
+std::map<std::string, std::unordered_map<uint64_t, const dbcppp::IMessage*>> CanGen::m_dbcMessages{};
 
 #endif

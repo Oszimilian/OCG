@@ -1,6 +1,6 @@
 BaseConfig:
   - interfaceName: vcan0
-    dbcFileName: /home/maximilian/Git/CanGen/dbc/CAN4_Accu_1.dbc
+    dbcFileName: /home/maximilian/Git/CanGen/dbc/CAN7_UASA2209_Accu_2.dbc
     customWaveFile: /home/maximilian/Git/CanGen/config/Wave/waveConfigCan1.yaml
 #  - interfaceName: vcan1
 #    dbcFileName: /home/maximilian/Git/CanGen/dbc/CAN7_UASA2209_Accu_2.dbc

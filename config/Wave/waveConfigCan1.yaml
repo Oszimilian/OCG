@@ -1,25 +1,77 @@
 waveConfig:
   updateDuration: 
     unit: ms
-    duration: 100
+    duration: 10
+
+  single:
+      - messageName: Stack11_Cell05_08
+        messageSignals:
+          - signalName: Stack11_Zelle_08
+            signalNoise: 20
+            transformType: linear #static
+            wave:
+              0: 10000
+              100: 15000
+              200: 18000
+              300: 19000
+          - signalName: Stack11_Zelle_07
+            signalNoise: 20
+            transformType: linear #linear
+            wave:
+              0: 10000
+              100: 15000
+              200: 18000
+              300: 19000
+          - signalName: Stack11_Zelle_06
+            signalNoise: 20
+            transformType: static #linear
+            wave:
+              0: 10000
+              100: 15000
+              200: 18000
+              300: 19000
+          - signalName: Stack11_Zelle_05
+            signalNoise: 20
+            transformType: static #linear
+            wave:
+              0: 10000
+              100: 15000
+              200: 18000
+              300: 19000
+
 
   multi:
       signalNoise: 20
       transformType: linear #linear
       wave:
         0: 50
-        10: 45
-        20: 50
-        30: 25
+        100: 45
+        200: 50
+        300: 25
       parts:
         - Message:
-          messageName: test
+          messageName: Stack11_Temp07_12
+          messageSignals:
+            - Stack11_Temp_12
+            - Stack11_Temp_11
+            - Stack11_Temp_10
+            - Stack11_Temp_09
+            - Stack11_Temp_08
+            - Stack11_Temp_07
+        - Message:
+          messageName: Stack11_Temp01_06
           messageSignals:
             - Stack11_Temp_06
-            - Stack11_Temp_03
-        - Message:
-          messageName: test2
-          messageSignals:
-            - Stack11_Temp_03
+            - Stack11_Temp_05
             - Stack11_Temp_04
+            - Stack11_Temp_03
+            - Stack11_Temp_02
+            - Stack11_Temp_01
+        - Message:
+          messageName: Stack11_Cell05_08
+          messageSignals:
+            - Stack11_Zelle_08
+            - Stack11_Zelle_07
+            - Stack11_Zelle_06
+            - Stack11_Zelle_05
         
