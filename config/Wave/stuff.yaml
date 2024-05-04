@@ -1,75 +1,530 @@
 waveConfig:
-  updateDuration: 
+  updateDuration:
     unit: ms
-    duration: 1000
-  single:
-    - messageName: Stack11_Temp07_12
-      messageSignals:
-        - signalName: Stack11_Temp_12
-          signalNoise: 20
-          transformType: linear #static
-          wave:
-            0: 50
-            10: 40
-            20: 50
-            30: 60
-        - signalName: Stack11_Temp_11
-          signalNoise: 20
-          transformType: static #linear
-          wave:
-            0: 50
-            10: 45
-            20: 50
-            30: 20
-        - signalName: Stack11_Temp_10
-          signalNoise: 20
-          transformType: static #linear
-          wave:
-            0: 50
-            10: 45
-            20: 50
-            30: 20
-        - signalName: Stack11_Temp_09
-          signalNoise: 20
-          transformType: static #linear
-          wave:
-            0: 50
-            10: 45
-            20: 50
-            30: 20
-        - signalName: Stack11_Temp_08
-          signalNoise: 20
-          transformType: static #linear
-          wave:
-            0: 50
-            10: 45
-            20: 50
-            30: 20
-        - signalName: Stack11_Temp_07
-          signalNoise: 20
-          transformType: static #linear
-          wave:
-            0: 50
-            10: 45
-            20: 50
-            30: 20
+    duration: 10
 
-  multi:
-    signalNoise: 20
-    transformType: static #linear
-    wave:
-      0: 50
-      10: 45
-      20: 50
-      30: 25
-    parts:
-      - Message:
-        messageName: test
-        messageSignals:
-          - Stack11_Temp_06
-          - Stack11_Temp_03
-      - Message:
-        messageName: test2
-        messageSignals:
-          - Stack11_Temp_03
-          - Stack11_Temp_04
+  waveForms:
+
+    # TEMPS not Normal behaviour
+    - Set:
+        Typ: single
+        message:
+          messageName: Stack12_Temp07_12
+          messageSignals:
+            - signalName: Stack12_Temp_12
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                1000: 35
+                2000: 65
+                3000: 75
+            - signalName: Stack12_Temp_11
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                1000: 35
+                2000: 65
+                3000: 75
+            - signalName: Stack12_Temp_10
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                1000: 35
+                2000: 65
+                3000: 75
+            - signalName: Stack12_Temp_09
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                1000: 35
+                2000: 65
+                3000: 75
+            - signalName: Stack12_Temp_08
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                1000: 35
+                2000: 65
+                3000: 75
+            - signalName: Stack12_Temp_07
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                1000: 35
+                2000: 65
+                3000: 75
+
+    # TEMPS Normal Behaviour
+    - Set:
+        Typ: multi
+        message:
+          parts:
+            - messageName: Stack12_Temp07_12
+              messageSignals:
+                - Stack12_Temp_12
+                - Stack12_Temp_11
+                - Stack12_Temp_10
+                - Stack12_Temp_09
+                - Stack12_Temp_08
+                - Stack12_Temp_07
+            - messageName: Stack12_Temp01_06
+              messageSignals:
+                - Stack12_Temp_06
+                - Stack12_Temp_05
+                - Stack12_Temp_04
+                - Stack12_Temp_03
+                - Stack12_Temp_02
+                - Stack12_Temp_01
+            - messageName: Stack11_Temp07_12
+              messageSignals:
+                - Stack11_Temp_12
+                - Stack11_Temp_11
+                - Stack11_Temp_10
+                - Stack11_Temp_09
+                - Stack11_Temp_08
+                - Stack11_Temp_07
+            - messageName: Stack11_Temp01_06
+              messageSignals:
+                - Stack11_Temp_06
+                - Stack11_Temp_05
+                - Stack11_Temp_04
+                - Stack11_Temp_03
+                - Stack11_Temp_02
+                - Stack11_Temp_01
+            - messageName: Stack10_Temp07_12
+              messageSignals:
+                - Stack10_Temp_12
+                - Stack10_Temp_11
+                - Stack10_Temp_10
+                - Stack10_Temp_09
+                - Stack10_Temp_08
+                - Stack10_Temp_07
+            - messageName: Stack10_Temp01_06
+              messageSignals:
+                - Stack10_Temp_06
+                - Stack10_Temp_05
+                - Stack10_Temp_04
+                - Stack10_Temp_03
+                - Stack10_Temp_02
+                - Stack10_Temp_01
+            - messageName: Stack09_Temp07_12
+              messageSignals:
+                - Stack09_Temp_12
+                - Stack09_Temp_11
+                - Stack09_Temp_10
+                - Stack09_Temp_09
+                - Stack09_Temp_08
+                - Stack09_Temp_07
+            - messageName: Stack09_Temp01_06
+              messageSignals:
+                - Stack09_Temp_06
+                - Stack09_Temp_05
+                - Stack09_Temp_04
+                - Stack09_Temp_03
+                - Stack09_Temp_02
+                - Stack09_Temp_01
+            - messageName: Stack08_Temp07_12
+              messageSignals:
+                - Stack08_Temp_12
+                - Stack08_Temp_11
+                - Stack08_Temp_10
+                - Stack08_Temp_09
+                - Stack08_Temp_08
+                - Stack08_Temp_07
+            - messageName: Stack08_Temp01_06
+              messageSignals:
+                - Stack08_Temp_06
+                - Stack08_Temp_05
+                - Stack08_Temp_04
+                - Stack08_Temp_03
+                - Stack08_Temp_02
+                - Stack08_Temp_01
+            - messageName: Stack07_Temp07_12
+              messageSignals:
+                - Stack07_Temp_12
+                - Stack07_Temp_11
+                - Stack07_Temp_10
+                - Stack07_Temp_09
+                - Stack07_Temp_08
+                - Stack07_Temp_07
+            - messageName: Stack07_Temp01_06
+              messageSignals:
+                - Stack07_Temp_06
+                - Stack07_Temp_05
+                - Stack07_Temp_04
+                - Stack07_Temp_03
+                - Stack07_Temp_02
+                - Stack07_Temp_01
+            - messageName: Stack06_Temp07_12
+              messageSignals:
+                - Stack06_Temp_12
+                - Stack06_Temp_11
+                - Stack06_Temp_10
+                - Stack06_Temp_09
+                - Stack06_Temp_08
+                - Stack06_Temp_07
+            - messageName: Stack06_Temp01_06
+              messageSignals:
+                - Stack06_Temp_06
+                - Stack06_Temp_05
+                - Stack06_Temp_04
+                - Stack06_Temp_03
+                - Stack06_Temp_02
+                - Stack06_Temp_01
+            - messageName: Stack05_Temp07_12
+              messageSignals:
+                - Stack05_Temp_12
+                - Stack05_Temp_11
+                - Stack05_Temp_10
+                - Stack05_Temp_09
+                - Stack05_Temp_08
+                - Stack05_Temp_07
+            - messageName: Stack05_Temp01_06
+              messageSignals:
+                - Stack05_Temp_06
+                - Stack05_Temp_05
+                - Stack05_Temp_04
+                - Stack05_Temp_03
+                - Stack05_Temp_02
+                - Stack05_Temp_01
+            - messageName: Stack04_Temp07_12
+              messageSignals:
+                - Stack04_Temp_12
+                - Stack04_Temp_11
+                - Stack04_Temp_10
+                - Stack04_Temp_09
+                - Stack04_Temp_08
+                - Stack04_Temp_07
+            - messageName: Stack04_Temp01_06
+              messageSignals:
+                - Stack04_Temp_06
+                - Stack04_Temp_05
+                - Stack04_Temp_04
+                - Stack04_Temp_03
+                - Stack04_Temp_02
+                - Stack04_Temp_01
+            - messageName: Stack03_Temp07_12
+              messageSignals:
+                - Stack03_Temp_12
+                - Stack03_Temp_11
+                - Stack03_Temp_10
+                - Stack03_Temp_09
+                - Stack03_Temp_08
+                - Stack03_Temp_07
+            - messageName: Stack03_Temp01_06
+              messageSignals:
+                - Stack03_Temp_06
+                - Stack03_Temp_05
+                - Stack03_Temp_04
+                - Stack03_Temp_03
+                - Stack03_Temp_02
+                - Stack03_Temp_01
+            - messageName: Stack02_Temp07_12
+              messageSignals:
+                - Stack02_Temp_12
+                - Stack02_Temp_11
+                - Stack02_Temp_10
+                - Stack02_Temp_09
+                - Stack02_Temp_08
+                - Stack02_Temp_07
+            - messageName: Stack02_Temp01_06
+              messageSignals:
+                - Stack02_Temp_06
+                - Stack02_Temp_05
+                - Stack02_Temp_04
+                - Stack02_Temp_03
+                - Stack02_Temp_02
+                - Stack02_Temp_01
+            - messageName: Stack01_Temp07_12
+              messageSignals:
+                - Stack01_Temp_12
+                - Stack01_Temp_11
+                - Stack01_Temp_10
+                - Stack01_Temp_09
+                - Stack01_Temp_08
+                - Stack01_Temp_07
+            - messageName: Stack01_Temp01_06
+              messageSignals:
+                - Stack01_Temp_06
+                - Stack01_Temp_05
+                - Stack01_Temp_04
+                - Stack01_Temp_03
+                - Stack01_Temp_02
+                - Stack01_Temp_01
+          partsConfig:
+            signalNoise: 20
+            transformType: linear
+            wave:
+              0: 30
+              1000: 35
+              2000: 40
+              3000: 50
+
+    # TEMPS not Normal behaviour
+    - Set:
+        Typ: single
+        message:
+          messageName: Stack12_Cell09_12
+          messageSignals:
+            - signalName: Stack12_Zelle_12
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 32000
+                1000: 38000
+                2000: 43000
+                3000: 48000
+            - signalName: Stack12_Zelle_11
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 32000
+                1000: 38000
+                2000: 43000
+                3000: 48000
+            - signalName: Stack12_Zelle_10
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 32000
+                1000: 38000
+                2000: 43000
+                3000: 48000
+            - signalName: Stack12_Zelle_09
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 32000
+                1000: 38000
+                2000: 43000
+                3000: 48000
+          
+    # TEMPS Normal Behaviour
+    - Set:
+        Typ: multi
+        message:
+          parts:
+            - messageName: Stack12_Cell05_08
+              messageSignals:
+                - Stack12_Zelle_08
+                - Stack12_Zelle_07
+                - Stack12_Zelle_06
+                - Stack12_Zelle_05
+            - messageName: Stack12_Cell01_04
+              messageSignals:
+                - Stack12_Zelle_04
+                - Stack12_Zelle_03
+                - Stack12_Zelle_02
+                - Stack12_Zelle_01
+            - messageName: Stack11_Cell09_12
+              messageSignals:
+                - Stack11_Zelle_12
+                - Stack11_Zelle_11
+                - Stack11_Zelle_10
+                - Stack11_Zelle_09
+            - messageName: Stack11_Cell05_08
+              messageSignals:
+                - Stack11_Zelle_08
+                - Stack11_Zelle_07
+                - Stack11_Zelle_06
+                - Stack11_Zelle_05
+            - messageName: Stack11_Cell01_04
+              messageSignals:
+                - Stack11_Zelle_04
+                - Stack11_Zelle_03
+                - Stack11_Zelle_02
+                - Stack11_Zelle_01
+            - messageName: Stack10_Cell09_12
+              messageSignals:
+                - Stack10_Zelle_12
+                - Stack10_Zelle_11
+                - Stack10_Zelle_10
+                - Stack10_Zelle_09
+            - messageName: Stack10_Cell05_08
+              messageSignals:
+                - Stack10_Zelle_08
+                - Stack10_Zelle_07
+                - Stack10_Zelle_06
+                - Stack10_Zelle_05
+            - messageName: Stack10_Cell01_04
+              messageSignals:
+                - Stack10_Zelle_04
+                - Stack10_Zelle_03
+                - Stack10_Zelle_02
+                - Stack10_Zelle_01
+            - messageName: Stack09_Cell09_12
+              messageSignals:
+                - Stack09_Zelle_12
+                - Stack09_Zelle_11
+                - Stack09_Zelle_10
+                - Stack09_Zelle_09
+            - messageName: Stack09_Cell05_08
+              messageSignals:
+                - Stack09_Zelle_08
+                - Stack09_Zelle_07
+                - Stack09_Zelle_06
+                - Stack09_Zelle_05
+            - messageName: Stack09_Cell01_04
+              messageSignals:
+                - Stack09_Zelle_04
+                - Stack09_Zelle_03
+                - Stack09_Zelle_02
+                - Stack09_Zelle_01
+            - messageName: Stack08_Cell09_12
+              messageSignals:
+                - Stack08_Zelle_12
+                - Stack08_Zelle_11
+                - Stack08_Zelle_10
+                - Stack08_Zelle_09
+            - messageName: Stack08_Cell05_08
+              messageSignals:
+                - Stack08_Zelle_08
+                - Stack08_Zelle_07
+                - Stack08_Zelle_06
+                - Stack08_Zelle_05
+            - messageName: Stack08_Cell01_04
+              messageSignals:
+                - Stack08_Zelle_04
+                - Stack08_Zelle_03
+                - Stack08_Zelle_02
+                - Stack08_Zelle_01
+            - messageName: Stack07_Cell09_12
+              messageSignals:
+                - Stack07_Zelle_12
+                - Stack07_Zelle_11
+                - Stack07_Zelle_10
+                - Stack07_Zelle_09
+            - messageName: Stack07_Cell05_08
+              messageSignals:
+                - Stack07_Zelle_08
+                - Stack07_Zelle_07
+                - Stack07_Zelle_06
+                - Stack07_Zelle_05
+            - messageName: Stack07_Cell01_04
+              messageSignals:
+                - Stack07_Zelle_04
+                - Stack07_Zelle_03
+                - Stack07_Zelle_02
+                - Stack07_Zelle_01
+            - messageName: Stack06_Cell09_12
+              messageSignals:
+                - Stack06_Zelle_12
+                - Stack06_Zelle_11
+                - Stack06_Zelle_10
+                - Stack06_Zelle_09
+            - messageName: Stack06_Cell05_08
+              messageSignals:
+                - Stack06_Zelle_08
+                - Stack06_Zelle_07
+                - Stack06_Zelle_06
+                - Stack06_Zelle_05
+            - messageName: Stack06_Cell01_04
+              messageSignals:
+                - Stack06_Zelle_04
+                - Stack06_Zelle_03
+                - Stack06_Zelle_02
+                - Stack06_Zelle_01
+            - messageName: Stack05_Cell09_12
+              messageSignals:
+                - Stack05_Zelle_12
+                - Stack05_Zelle_11
+                - Stack05_Zelle_10
+                - Stack05_Zelle_09
+            - messageName: Stack05_Cell05_08
+              messageSignals:
+                - Stack05_Zelle_08
+                - Stack05_Zelle_07
+                - Stack05_Zelle_06
+                - Stack05_Zelle_05
+            - messageName: Stack05_Cell01_04
+              messageSignals:
+                - Stack05_Zelle_04
+                - Stack05_Zelle_03
+                - Stack05_Zelle_02
+                - Stack05_Zelle_01
+            - messageName: Stack04_Cell09_12
+              messageSignals:
+                - Stack04_Zelle_12
+                - Stack04_Zelle_11
+                - Stack04_Zelle_10
+                - Stack04_Zelle_09
+            - messageName: Stack04_Cell05_08
+              messageSignals:
+                - Stack04_Zelle_08
+                - Stack04_Zelle_07
+                - Stack04_Zelle_06
+                - Stack04_Zelle_05
+            - messageName: Stack04_Cell01_04
+              messageSignals:
+                - Stack04_Zelle_04
+                - Stack04_Zelle_03
+                - Stack04_Zelle_02
+                - Stack04_Zelle_01
+            - messageName: Stack03_Cell09_12
+              messageSignals:
+                - Stack03_Zelle_12
+                - Stack03_Zelle_11
+                - Stack03_Zelle_10
+                - Stack03_Zelle_09
+            - messageName: Stack03_Cell05_08
+              messageSignals:
+                - Stack03_Zelle_08
+                - Stack03_Zelle_07
+                - Stack03_Zelle_06
+                - Stack03_Zelle_05
+            - messageName: Stack03_Cell01_04
+              messageSignals:
+                - Stack03_Zelle_04
+                - Stack03_Zelle_03
+                - Stack03_Zelle_02
+                - Stack03_Zelle_01
+            - messageName: Stack02_Cell09_12
+              messageSignals:
+                - Stack02_Zelle_12
+                - Stack02_Zelle_11
+                - Stack02_Zelle_10
+                - Stack02_Zelle_09
+            - messageName: Stack02_Cell05_08
+              messageSignals:
+                - Stack02_Zelle_08
+                - Stack02_Zelle_07
+                - Stack02_Zelle_06
+                - Stack02_Zelle_05
+            - messageName: Stack02_Cell01_04
+              messageSignals:
+                - Stack02_Zelle_04
+                - Stack02_Zelle_03
+                - Stack02_Zelle_02
+                - Stack02_Zelle_01
+            - messageName: Stack01_Cell09_12
+              messageSignals:
+                - Stack01_Zelle_12
+                - Stack01_Zelle_11
+                - Stack01_Zelle_10
+                - Stack01_Zelle_09
+            - messageName: Stack01_Cell05_08
+              messageSignals:
+                - Stack01_Zelle_08
+                - Stack01_Zelle_07
+                - Stack01_Zelle_06
+                - Stack01_Zelle_05
+            - messageName: Stack01_Cell05_08
+              messageSignals:
+                - Stack01_Zelle_04
+                - Stack01_Zelle_03
+                - Stack01_Zelle_02
+                - Stack01_Zelle_01
+          partsConfig:
+            signalNoise: 20
+            transformType: linear
+            wave:
+              0: 32000
+              1000: 35000
+              2000: 38000
+              3000: 39000

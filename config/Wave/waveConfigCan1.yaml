@@ -10,44 +10,44 @@ waveConfig:
             signalNoise: 20
             transformType: linear #static
             wave:
-              0: 10000
-              100: 15000
-              200: 18000
-              300: 19000
+              0: 33000
+              1000: 35000
+              2000: 38000
+              3000: 40000
           - signalName: Stack11_Zelle_07
             signalNoise: 20
             transformType: linear #linear
             wave:
-              0: 10000
-              100: 15000
-              200: 18000
-              300: 19000
+              0: 33000
+              1000: 35000
+              2000: 38000
+              3000: 40000
           - signalName: Stack11_Zelle_06
             signalNoise: 20
-            transformType: static #linear
+            transformType: linear #linear
             wave:
-              0: 10000
-              100: 15000
-              200: 18000
-              300: 19000
+              0: 33000
+              1000: 35000
+              2000: 50000
+              3000: 40000
           - signalName: Stack11_Zelle_05
             signalNoise: 20
-            transformType: static #linear
+            transformType: linear #linear
             wave:
-              0: 10000
-              100: 15000
-              200: 18000
-              300: 19000
+              0: 33000
+              1000: 35000
+              2000: 38000
+              3000: 40000
 
 
   multi:
       signalNoise: 20
       transformType: linear #linear
       wave:
-        0: 50
-        100: 45
-        200: 50
-        300: 25
+        0: 30
+        1000: 35
+        2000: 40
+        3000: 50
       parts:
         - Message:
           messageName: Stack11_Temp07_12
@@ -67,11 +67,4 @@ waveConfig:
             - Stack11_Temp_03
             - Stack11_Temp_02
             - Stack11_Temp_01
-        - Message:
-          messageName: Stack11_Cell05_08
-          messageSignals:
-            - Stack11_Zelle_08
-            - Stack11_Zelle_07
-            - Stack11_Zelle_06
-            - Stack11_Zelle_05
         

@@ -197,14 +197,13 @@ class CanGen {
                     sockcanpp::CanMessage canMessage(frame);
                     auto sendSize = canDriver->sendMessage(canMessage);
                     
-                    //std::cout << "SendSize: " << sendSize << std::endl;
-                    if (messageName == "Stack11_Cell05_08") {
-                        std::cout << messageName;
-                        for (int i = 7; i >= 0; i--) {
-                            std::cout << std::hex << static_cast<int>(frame.data[i]) << " ";
-                        }
-                        std::cout << std::endl;
+                    /*
+                    std::cout << messageName;
+                    for (int i = 7; i >= 0; i--) {
+                        std::cout << std::hex << static_cast<int>(frame.data[i]) << " ";
                     }
+                    std::cout << std::endl;
+                    */
                     
                 }
                 
@@ -249,6 +248,8 @@ class CanGen {
             for (const auto&[interfaceName, baseConfig] : m_interfaceConfigMap) {
                 if(!importWaveConfig(baseConfig.customWaveFilePath, interfaceName)) return;
 
+                
+
                 if(!initCan(interfaceName)) return;
 
                 if(!initDbc(interfaceName, baseConfig.dbcFilePath)) return;
@@ -257,7 +258,7 @@ class CanGen {
             boost::asio::steady_timer timer(m_io, boost::asio::chrono::milliseconds(m_globalUpdateDuration));
             timer.async_wait(std::bind(timerCallback, std::placeholders::_1, &timer));
 
-            print();
+            //print();
 
             std::cout << "Started Timer" << std::endl;
             m_io.run();
@@ -273,126 +274,106 @@ class CanGen {
             return true;
         }
 
+        static TransistionTyp getTransistionTyp(const std::string& transformType) {
+            if(transformType == "linear") {
+                return TransistionTyp::linearTransistion;
+            } else {
+                return TransistionTyp::staticTransistion;
+            }
+        }
 
         static bool importWaveConfig(const std::string& waveConfigFilePath, const std::string& interfaceName) {
-            try 
-            {
+            try {
                 YAML::Node config = YAML::LoadFile(waveConfigFilePath);
-                
-                auto root = config["waveConfig"];
-                
-                auto updateDuration = root["updateDuration"];
-                m_gloablUpdateDurationUnit = updateDuration["unit"].as<std::string>();
-                m_globalUpdateDuration = updateDuration["duration"].as<int>();
+
+                m_gloablUpdateDurationUnit = config["waveConfig"]["updateDuration"]["unit"].as<std::string>();
+                m_globalUpdateDuration = config["waveConfig"]["updateDuration"]["duration"].as<int>();
 
 
-                WaveConfig waveSingleConfig;
-                  
-                auto single = root["single"];
+                WaveConfig waveConfig;
 
-                if (single) {
-                    for (const auto& canMessage : single) {
+                for (const auto& set : config["waveConfig"]["waveForms"]) {
+                    std::string type = set["Set"]["Typ"].as<std::string>();
+
+                    if(type == "single") {
+                        std::string messageName = set["Set"]["message"]["messageName"].as<std::string>();
                         WaveMessageConfig waveMessageConfig;
-
-                        auto messageName = canMessage["messageName"].as<std::string>();
-
-                        
-
-                        for (const auto& canSignals : canMessage["messageSignals"]) {
+                        for (const auto& messageSignals : set["Set"]["message"]["messageSignals"]) {
                             WaveSignalConfig waveSignalConfig;
-                            
-                            auto signalName = canSignals["signalName"].as<std::string>();
-                            
-                            waveSignalConfig.noise = canSignals["signalNoise"].as<int>();
-
-
-                            Wave wave;
-
-                            auto transformType = canSignals["transformType"].as<std::string>();
-                            if(transformType == "linear") {
-                                wave.transistionTyp = TransistionTyp::linearTransistion;
-                            } else if(transformType == "static") {
-                                wave.transistionTyp = TransistionTyp::staticTransistion;
-                            } else {
-                                std::cerr << "unknown transformTyp" << std::endl;
-                                std::cerr << "Typ: " << transformType << std::endl;
-                                return false;
-                            }
-                            
-                            
-                            for (const auto& steps : canSignals["wave"]) {
-                                
-                                std::string leftNumber = steps.first.as<std::string>();
-
-                                if(isNumber(leftNumber)) {
-                                    int rawNumber = atoi(leftNumber.c_str());
-                                    int value = steps.second.as<int>();
-                                    wave.multiWaveSteps.emplace(rawNumber, value);
+                            std::string signalName = messageSignals["signalName"].as<std::string>();
+                            int signalNoise = messageSignals["signalNoise"].as<int>();
+                            waveSignalConfig.noise = signalNoise;
+                            std::string transformType = messageSignals["transformType"].as<std::string>();
+                            Wave s_wave;
+                            s_wave.transistionTyp = getTransistionTyp(transformType);
+                            for(const auto& wave : messageSignals["wave"]) {
+                                std::string firstNum = wave.first.as<std::string>();
+                                std::string secondNum  = wave.second.as<std::string>();
+                                if(isNumber(firstNum) && isNumber(secondNum)) {
+                                    s_wave.multiWaveSteps.emplace(atoi(firstNum.c_str()), static_cast<double>(atoi(secondNum.c_str())));
                                 }
                             }
+                            waveSignalConfig.wave = s_wave;
+                            waveMessageConfig.signalConfig.emplace(signalName, std::move(waveSignalConfig));
+                        }
+
+                        waveConfig.messages.emplace(messageName, std::move(waveMessageConfig));
+                    } 
+                    else if(type == "multi") {
+
+                        WaveSignalConfig waveSignalConfig;
+
+                        int signalNoise = set["Set"]["message"]["partsConfig"]["signalNoise"].as<int>();
+                        waveSignalConfig.noise = signalNoise;
+
+                        Wave s_wave;
+                        std::string transformType = set["Set"]["message"]["partsConfig"]["transformType"].as<std::string>();
+                        s_wave.transistionTyp = getTransistionTyp(transformType);
+
+
+                        for (const auto& wave : set["Set"]["message"]["partsConfig"]["wave"]) {
+                            std::string firstNum = wave.first.as<std::string>();
+                            std::string secondNum  = wave.second.as<std::string>();
+
+                            if(isNumber(firstNum) && isNumber(secondNum)) {
+                                s_wave.multiWaveSteps.emplace(atoi(firstNum.c_str()), static_cast<double>(atoi(secondNum.c_str())));
+                            }
+                        }
+
+                        waveSignalConfig.wave = s_wave;
+
+
+                        
+                        for (const auto& parts : set["Set"]["message"]["parts"]) {
+                            std::string messageName = parts["messageName"].as<std::string>();
+                            WaveMessageConfig waveMessageConfig;
                             
-                            waveSignalConfig.wave = wave;
+                            for (const auto& messageSignals : parts["messageSignals"]) {
+                                waveMessageConfig.signalConfig.emplace(messageSignals.as<std::string>(), waveSignalConfig);
+                            }
 
-                            waveMessageConfig.signalConfig.emplace(signalName, waveSignalConfig);
+                            waveConfig.messages.emplace(messageName, waveMessageConfig);
+                            
                         }
                         
-                        waveSingleConfig.messages.emplace(messageName, waveMessageConfig);
-                        
                     }
+                    
+                    
+
                 }
 
-            
-                auto multi = root["multi"];
+                m_waveSingleConfigMap.emplace(interfaceName, std::move(waveConfig));
 
-                if(multi) {
-                    WaveSignalConfig waveSignalConfig;
-                    waveSignalConfig.noise = multi["signalNoise"].as<int>();
-
-                    Wave wave;
-
-                    auto transformType = multi["transformType"].as<std::string>();
-                    if(transformType == "linear") {
-                        wave.transistionTyp = TransistionTyp::linearTransistion;
-                    } else if(transformType == "static") {
-                        wave.transistionTyp = TransistionTyp::staticTransistion;
-                    } else {
-                        std::cerr << "unknown transformTyp" << std::endl;
-                        std::cerr << "Typ: " << transformType << std::endl;
-                        return false;
-                    }
-
-                    for (const auto& steps : multi["wave"]) {
-                        std::string leftNumber = steps.first.as<std::string>();
-                        if(isNumber(leftNumber)) {
-                            int rawNumber = atoi(leftNumber.c_str());
-                            int value = steps.second.as<int>();
-                            wave.multiWaveSteps.emplace(rawNumber, value);
-                        }
-                    }
-                    waveSignalConfig.wave = wave;
-
-                    for (const auto& parts : multi["parts"]) {
-                        WaveMessageConfig waveMessageConfig;
-                        std::string messageName = parts["messageName"].as<std::string>();
-                        for (const auto& signal : parts["messageSignals"]) {
-                            std::string signalsName = signal.as<std::string>();
-                            waveMessageConfig.signalConfig.emplace(signalsName, waveSignalConfig);
-                        }
-                        waveSingleConfig.messages.emplace(messageName, waveMessageConfig);
-                    }
-                }
-
-                m_waveSingleConfigMap.emplace(interfaceName, waveSingleConfig);
-                
-
-            }catch(const YAML::ParserException& ex){
-                std::cerr << "Yaml File could not be parsed" << std::endl;
-                std::cerr << "Filename: " << waveConfigFilePath << std::endl;
-                return false;
+            } catch (const YAML::ParserException& ex) {
+                std::cerr << "YAML-Datei konnte nicht geparst werden: " << ex.what() << std::endl;
+            } catch (const std::exception& ex) {
+                std::cerr << "Fehler: " << ex.what() << std::endl;
             }
+
 
             return true;
         }
+
 
         static void print() {
             for (const auto& [interfaceName, waveSingleConfig] : m_waveSingleConfigMap) {
