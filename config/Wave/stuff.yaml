@@ -1,7 +1,7 @@
 waveConfig:
   updateDuration:
     unit: ms
-    duration: 10
+    duration: 100
 
   waveForms:
 
@@ -16,49 +16,49 @@ waveConfig:
               transformType: linear
               wave:
                 0: 30
-                1000: 35
-                2000: 65
-                3000: 75
+                100: 35
+                200: 65
+                300: 75
             - signalName: Stack12_Temp_11
               signalNoise: 20
               transformType: linear
               wave:
                 0: 30
-                1000: 35
-                2000: 65
-                3000: 75
+                100: 35
+                200: 65
+                300: 75
             - signalName: Stack12_Temp_10
               signalNoise: 20
               transformType: linear
               wave:
                 0: 30
-                1000: 35
-                2000: 65
-                3000: 75
+                100: 35
+                200: 65
+                300: 75
             - signalName: Stack12_Temp_09
               signalNoise: 20
               transformType: linear
               wave:
                 0: 30
-                1000: 35
-                2000: 65
-                3000: 75
+                100: 35
+                200: 65
+                300: 75
             - signalName: Stack12_Temp_08
               signalNoise: 20
               transformType: linear
               wave:
                 0: 30
-                1000: 35
-                2000: 65
-                3000: 75
+                100: 35
+                200: 65
+                300: 75
             - signalName: Stack12_Temp_07
               signalNoise: 20
               transformType: linear
               wave:
                 0: 30
-                1000: 35
-                2000: 65
-                3000: 75
+                100: 35
+                200: 65
+                300: 75
 
     # TEMPS Normal Behaviour
     - Set:
@@ -262,9 +262,9 @@ waveConfig:
             transformType: linear
             wave:
               0: 30
-              1000: 35
-              2000: 40
-              3000: 50
+              100: 35
+              200: 40
+              300: 50
 
     # TEMPS not Normal behaviour
     - Set:
@@ -277,33 +277,33 @@ waveConfig:
               transformType: linear
               wave:
                 0: 32000
-                1000: 38000
-                2000: 43000
-                3000: 48000
+                100: 38000
+                200: 43000
+                300: 48000
             - signalName: Stack12_Zelle_11
               signalNoise: 20
               transformType: linear
               wave:
                 0: 32000
-                1000: 38000
-                2000: 43000
-                3000: 48000
+                100: 38000
+                200: 43000
+                300: 48000
             - signalName: Stack12_Zelle_10
               signalNoise: 20
               transformType: linear
               wave:
                 0: 32000
-                1000: 38000
-                2000: 43000
-                3000: 48000
+                100: 38000
+                200: 43000
+                300: 48000
             - signalName: Stack12_Zelle_09
               signalNoise: 20
               transformType: linear
               wave:
                 0: 32000
-                1000: 38000
-                2000: 43000
-                3000: 48000
+                100: 38000
+                200: 43000
+                300: 48000
           
     # TEMPS Normal Behaviour
     - Set:
@@ -514,7 +514,7 @@ waveConfig:
                 - Stack01_Zelle_07
                 - Stack01_Zelle_06
                 - Stack01_Zelle_05
-            - messageName: Stack01_Cell05_08
+            - messageName: Stack01_Cell01_04
               messageSignals:
                 - Stack01_Zelle_04
                 - Stack01_Zelle_03
@@ -525,6 +525,6 @@ waveConfig:
             transformType: linear
             wave:
               0: 32000
-              1000: 35000
-              2000: 38000
-              3000: 39000
+              100: 35000
+              200: 38000
+              300: 39000
