@@ -1,0 +1,8 @@
+BaseConfig:
+  - interfaceName: vcan1
+    dbcFileName: /home/charger/Git/CanGen/dbc/CAN7_UASA2209_Accu_2.dbc
+    customWaveFile: /home/charger/Git/CanGen/config/Wave/stuff.yaml
+#  - interfaceName: vcan1
+#    dbcFileName: /home/maximilian/Git/CanGen/dbc/CAN7_UASA2209_Accu_2.dbc
+#    customWaveFile: 
+  
