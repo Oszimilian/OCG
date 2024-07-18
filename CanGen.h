@@ -108,6 +108,8 @@ class CanGen {
 
         static void processMessages() {
 
+            static bool mHasCanged = false;
+
             for (auto& [interfaceName, waveConfig] : m_waveSingleConfigMap) {
                 
                 if (!m_interfaceCanMap.count(interfaceName)) {
@@ -162,7 +164,8 @@ class CanGen {
                                     double deltaX = (double)(itMwsBegin->first - x);
                                     double deltaY = (double)(itMwsBegin->second - y);
                                     waveSignalConfig.wave.m = deltaY / deltaX;
-                                    std::cout << "m = " << waveSignalConfig.wave.m << std::endl;
+                                    std::cout << "m = " << waveSignalConfig.wave.m << " - ";
+                                    mHasCanged = true;
                                 } else {
                                     waveSignalConfig.wave.transistionTyp = TransistionTyp::staticTransistion;
                                 }
@@ -197,13 +200,10 @@ class CanGen {
                     sockcanpp::CanMessage canMessage(frame);
                     auto sendSize = canDriver->sendMessage(canMessage);
                     
-                    /*
-                    std::cout << messageName;
-                    for (int i = 7; i >= 0; i--) {
-                        std::cout << std::hex << static_cast<int>(frame.data[i]) << " ";
-                    }
+                    if (mHasCanged) {
                     std::cout << std::endl;
-                    */
+                    mHasCanged = false;
+                }
                     
                 }
                 
