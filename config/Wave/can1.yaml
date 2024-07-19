@@ -528,3 +528,79 @@ waveConfig:
               100: 35000
               200: 38000
               300: 39000
+    - Set:
+        Typ: single
+        message:
+          messageName: NLG_ACT_INT
+          messageSignals:
+            - signalName: NLG_DcHvAhAct
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                100: 35
+                200: 65
+                300: 75
+            - signalName: NLG_DcHvWhAct
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                100: 35
+                200: 65
+                300: 75
+            - signalName: NLG_AcWhAct
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                100: 35
+                200: 65
+                300: 75
+            - signalName: NLG_TempCon
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                100: 35
+                200: 65
+                300: 75
+            - signalName: NLG_MaxTempAct
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 30
+                100: 35
+                200: 65
+                300: 75
+
+    - Set:
+        Typ: single
+        message:
+          messageName: NLG_ACT_LIM
+          messageSignals:
+            - signalName: NLG_StateAct
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 0
+                100: 2
+                200: 3
+                300: 4
+            - signalName: NLG_DcHvVoltAct
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 0
+                100: 500
+                200: 600
+                300: 750
+
+            - signalName: NLG_DcHvCurrAct
+              signalNoise: 20
+              transformType: linear
+              wave:
+                0: 0
+                100: 50
+                200: 60
+                300: 75
